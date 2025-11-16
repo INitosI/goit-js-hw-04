@@ -1,15 +1,33 @@
-function filterArray(numbers, value) {
-	const filteredNumbers = [];
-	for (const number of numbers) {
-		if (number > value) {
-			filteredNumbers.push(number);
-		}
-	}
-	return filteredNumbers;
-}
+const profile = {
+	username: 'Jacob',
+	playTime: 300,
 
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+	// повинен приймати рядок (нове ім’я) в параметр newName
+	// та змінювати значення властивості username на нове. Нічого не повертає.
+
+	changeUsername(newName) {
+		this.username = newName;
+	},
+
+	// повинен приймати число (кількість годин) у параметр hours
+	// та збільшити на нього значення властивості playTime. Нічого не повертає.
+
+	updatePlayTime(hours) {
+		this.playTime += hours;
+	},
+
+	// має повертати рядок формату <Username> has <amount> active hours!,
+	//  де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин.
+
+	getInfo() {
+		return `${this.username} has ${this.playTime} active hours!`;
+	},
+};
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername('Marco');
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
